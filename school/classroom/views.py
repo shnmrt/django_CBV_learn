@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.urls import reverse, reverse_lazy
-from django.views.generic import TemplateView, FormView, CreateView, ListView
+from django.views.generic import TemplateView, FormView, CreateView, ListView, DetailView
 from classroom.models import Teacher
 from classroom.forms import ContactForm
 # Create your views here.
@@ -39,3 +39,10 @@ class TeacherListView(ListView):
     model = Teacher
     queryset = Teacher.objects.order_by('first_name')
     context_object_name = 'teacher_list'
+
+#DetailView
+class TeacherDetailView(DetailView):
+    #Return only one model entry pk
+    #model_detail.html
+    model =Teacher
+    #PK --> {{ teacher }}
